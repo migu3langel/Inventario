@@ -21,7 +21,7 @@ import com.inventarioActivos.model.entity.EmpresaActivo;
 import com.inventarioActivos.model.entity.TipoActivo;
 import com.inventarioActivos.model.entity.UbicacionActivo;
 import com.inventarioActivos.models.services.IActivoService;
-import com.inventarioActivos.models.services.ILoteService;
+
 import com.inventarioActivos.models.services.IUbicacionActivoService;
 
 @RestController
@@ -34,8 +34,7 @@ public class ActivoRestController {
 	@Autowired
 	private IUbicacionActivoService autoservice;
 	
-	@Autowired
-	private ILoteService loteService;
+
 	
 	@CrossOrigin(origins="http://localhost:4200")  
 	@GetMapping("/activos")

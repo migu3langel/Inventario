@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inventarioActivos.model.entity.EmpresaActivo;
-import com.inventarioActivos.model.entity.UbicacionActivo;
+
 import com.inventarioActivos.models.services.IEmpresaActivoService;
-import com.inventarioActivos.models.services.IUbicacionActivoService;
+
 
 @RestController
 @RequestMapping("/api")
