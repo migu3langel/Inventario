@@ -1,0 +1,26 @@
+server:
+    port: 9000
+    servlet:
+      context-path: /ia
+   
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@10.14.1.43:1521/xe
+    username: UINVENT
+    password: testinv123
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    tomcat:
+      initial-size: 15
+      max-wait: 20000
+      max-active: 50
+      max-idle: 15
+      min-idle: 8
+      default-auto-commit: true
+      test-on-borrow: false
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle10gDialect
+        format_sql: true
+        id:
+          new_generator_mappings: false
