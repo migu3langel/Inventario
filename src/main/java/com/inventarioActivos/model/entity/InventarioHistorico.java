@@ -2,7 +2,11 @@ package com.inventarioActivos.model.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+
+
 import java.math.BigDecimal;
+import java.util.Date;
 
 
 /**
@@ -35,6 +39,10 @@ public class InventarioHistorico implements Serializable {
 
 	@Column(name="EMPRESA_NUEVA")
 	private BigDecimal empresaNueva;
+	
+	@Column(name="FECHA")
+	@Temporal(TemporalType.DATE)
+	private Date fecha;
 
 	@Column(name="TIPO_ANTERIOR")
 	private BigDecimal tipoAnterior;
@@ -112,6 +120,14 @@ public class InventarioHistorico implements Serializable {
 		this.empresaNueva = empresaNueva;
 	}
 
+	public Date getFecha() {
+		return this.fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
 	public BigDecimal getTipoAnterior() {
 		return this.tipoAnterior;
 	}
@@ -151,5 +167,4 @@ public class InventarioHistorico implements Serializable {
 	public void setActivo(Activo activo) {
 		this.activo = activo;
 	}
-
 }
