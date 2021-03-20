@@ -25,6 +25,9 @@ public class InventarioHistoricoRestController {
 	@GetMapping("/historico")
 	public List<InventarioHistorico> index() {
 
+
+		UbicacionActivo ubicacionActivo = new UbicacionActivo();
+
 		return historicoService.findAll();
 
 	}
