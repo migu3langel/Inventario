@@ -3,7 +3,7 @@ package com.inventarioActivos.model.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -39,9 +39,8 @@ public class InventarioHistorico implements Serializable {
 
 	@Column(name="EMPRESA_NUEVA")
 	private BigDecimal empresaNueva;
-	
-	@Column(name="FECHA")
-	@Temporal(TemporalType.DATE)
+
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 
 	@Column(name="TIPO_ANTERIOR")
@@ -50,16 +49,21 @@ public class InventarioHistorico implements Serializable {
 	@Column(name="TIPO_NUEVO")
 	private BigDecimal tipoNuevo;
 
-	@Column(name="UBICACION_ANTERIOR")
-	private BigDecimal ubicacionAnterior;
-
-	@Column(name="UBICACION_NUEVA")
-	private BigDecimal ubicacionNueva;
-
 	//bi-directional many-to-one association to Activo
+	
 	@ManyToOne
 	@JoinColumn(name="CODIGO_ACTIVO")
 	private Activo activo;
+
+	//bi-directional many-to-one association to UbicacionActivo
+	@ManyToOne
+	@JoinColumn(name="UBICACION_ANTERIOR")
+	private UbicacionActivo ubicacionActivo1;
+
+	//bi-directional many-to-one association to UbicacionActivo
+	@ManyToOne
+	@JoinColumn(name="UBICACION_NUEVA")
+	private UbicacionActivo ubicacionActivo2;
 
 	public InventarioHistorico() {
 	}
@@ -144,27 +148,27 @@ public class InventarioHistorico implements Serializable {
 		this.tipoNuevo = tipoNuevo;
 	}
 
-	public BigDecimal getUbicacionAnterior() {
-		return this.ubicacionAnterior;
-	}
-
-	public void setUbicacionAnterior(BigDecimal ubicacionAnterior) {
-		this.ubicacionAnterior = ubicacionAnterior;
-	}
-
-	public BigDecimal getUbicacionNueva() {
-		return this.ubicacionNueva;
-	}
-
-	public void setUbicacionNueva(BigDecimal ubicacionNueva) {
-		this.ubicacionNueva = ubicacionNueva;
-	}
-
 	public Activo getActivo() {
 		return this.activo;
 	}
 
 	public void setActivo(Activo activo) {
 		this.activo = activo;
+	}
+
+	public UbicacionActivo getUbicacionActivo1() {
+		return this.ubicacionActivo1;
+	}
+
+	public void setUbicacionActivo1(UbicacionActivo ubicacionActivo1) {
+		this.ubicacionActivo1 = ubicacionActivo1;
+	}
+
+	public UbicacionActivo getUbicacionActivo2() {
+		return this.ubicacionActivo2;
+	}
+
+	public void setUbicacionActivo2(UbicacionActivo ubicacionActivo2) {
+		this.ubicacionActivo2 = ubicacionActivo2;
 	}
 }

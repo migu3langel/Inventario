@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inventarioActivos.model.entity.InventarioHistorico;
 
+
 import com.inventarioActivos.models.services.IInventarioHistoricoService;
 
 @RestController
@@ -24,9 +25,9 @@ public class InventarioHistoricoRestController {
 	@CrossOrigin(origins="http://localhost:4200")  
 	@GetMapping("/historico")
 	public List<InventarioHistorico> index() {
+	
 
-
-		UbicacionActivo ubicacionActivo = new UbicacionActivo();
+		
 
 		return historicoService.findAll();
 
