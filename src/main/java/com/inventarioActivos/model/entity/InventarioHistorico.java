@@ -3,66 +3,76 @@ package com.inventarioActivos.model.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+//import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 
 /**
  * The persistent class for the INVENTARIO_HISTORICO database table.
  * 
  */
 @Entity
-@Table(name="INVENTARIO_HISTORICO")
+@Table(name = "INVENTARIO_HISTORICO")
 public class InventarioHistorico implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ID_HISTORICO")
+	@Column(name = "ID_HISTORICO")
 	private long idHistorico;
 
-	@Column(name="CUSTODIO_ANTERIOR")
+	@Column(name = "CUSTODIO_ANTERIOR")
 	private String custodioAnterior;
 
-	@Column(name="CUSTODIO_NUEVO")
+	@Column(name = "CUSTODIO_NUEVO")
 	private String custodioNuevo;
 
-	@Column(name="DESCRIPCION_ANTERIOR")
+	@Column(name = "DESCRIPCION_ANTERIOR")
 	private String descripcionAnterior;
 
-	@Column(name="DESCRIPCION_NUEVA")
+	@Column(name = "DESCRIPCION_NUEVA")
 	private String descripcionNueva;
 
-	@Column(name="EMPRESA_ANTERIOR")
+	@Column(name = "EMPRESA_ANTERIOR")
 	private BigDecimal empresaAnterior;
 
-	@Column(name="EMPRESA_NUEVA")
+	@Column(name = "EMPRESA_NUEVA")
 	private BigDecimal empresaNueva;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
-
-	@Column(name="TIPO_ANTERIOR")
+	
+	
+	private BigDecimal realizado;
+	
+	@Column(name = "TIPO_ANTERIOR")
 	private BigDecimal tipoAnterior;
 
-	@Column(name="TIPO_NUEVO")
+	public BigDecimal getRealizado() {
+		return realizado;
+	}
+
+	public void setRealizado(BigDecimal realizado) {
+		this.realizado = realizado;
+	}
+
+	@Column(name = "TIPO_NUEVO")
 	private BigDecimal tipoNuevo;
 
-	//bi-directional many-to-one association to Activo
-	
+	// bi-directional many-to-one association to Activo
+
 	@ManyToOne
-	@JoinColumn(name="CODIGO_ACTIVO")
+	@JoinColumn(name = "CODIGO_ACTIVO")
 	private Activo activo;
 
-	//bi-directional many-to-one association to UbicacionActivo
+	// bi-directional many-to-one association to UbicacionActivo
 	@ManyToOne
-	@JoinColumn(name="UBICACION_ANTERIOR")
+	@JoinColumn(name = "UBICACION_ANTERIOR")
 	private UbicacionActivo ubicacionActivo1;
 
-	//bi-directional many-to-one association to UbicacionActivo
+	// bi-directional many-to-one association to UbicacionActivo
 	@ManyToOne
-	@JoinColumn(name="UBICACION_NUEVA")
+	@JoinColumn(name = "UBICACION_NUEVA")
 	private UbicacionActivo ubicacionActivo2;
 
 	public InventarioHistorico() {

@@ -52,7 +52,7 @@ public class ActivoRestController {
 
 	}
 
-	@PutMapping("/activo/{id}/{idUbicacion}")
+	@PutMapping("/activo/{id}/{descripcion}")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public Activo update(@RequestBody ActivoDto activo, @PathVariable String id, @PathVariable String idUbicacion) {
 		try {
@@ -65,8 +65,9 @@ public class ActivoRestController {
 			activonew.setDescripcion(activo.getDescripcion());
 			activonew.setCustodio(activo.getCustodio());
 			activonew.setUbicacionActivo(ubicacionActivo);
-	
-			activoService.save(activonew);
+			
+			activoService.save(acivonew);
+
 	
 			return null;
 		} catch (Exception hola) {
@@ -86,7 +87,7 @@ public class ActivoRestController {
 		TipoActivo tipo = new TipoActivo();
 		UbicacionActivo ubicacion = new UbicacionActivo();
 		
-		try {
+		
 		System.out.println("paso"+activodto.getCodigoActivo());
 		empresa.setIdEmpresa(activodto.getIdEmpresa());
 		tipo.setIdTipo(activodto.getIdTipo());
@@ -99,7 +100,7 @@ public class ActivoRestController {
 		activo.setUbicacionActivo(ubicacion);
 		activoService.save(activo);
 
-		}catch(Exception e) {e.printStackTrace();}
+		}}
 		
 		return null;
 		

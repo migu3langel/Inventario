@@ -36,5 +36,7 @@ public class ActivoServiceImpl implements IActivoService {
 		
 		return activoDao.save(activo);
 	}
+	
+
 
 }
